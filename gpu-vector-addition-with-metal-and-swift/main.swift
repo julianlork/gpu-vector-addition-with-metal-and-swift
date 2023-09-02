@@ -7,13 +7,13 @@
 
 import Foundation
 
-/// GPU addition
 let gpuAddition: GPUAddition
 let summandA: [Float] = (1...1000).map { _ in  Float.random(in: 1...1000)}
 let summandB: [Float] = (1...1000).map {_ in Float.random(in: 1...1000)}
 var cpuResult: [Float] = (1...1000).map { _ in 0 }
 let gpuResult: [Float]
 
+/// GPU addition
 gpuAddition = GPUAddition(summandA, summandB)
 gpuAddition.compute()
 gpuResult = gpuAddition.getResult()
