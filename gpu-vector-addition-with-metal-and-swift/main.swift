@@ -19,7 +19,7 @@ gpuAddition.compute()
 gpuResult = gpuAddition.getResult()
 
 /// CPU addition (low level)
-sum_of_arrays(summandA, summandB, &cpuResult, cpuResult.count)
+sum_of_arrays(summandA, summandB, &cpuResult, cpuResult.count)  /// &: inout param
 
 /// Result verification
 assert(cpuResult == gpuResult, "Error: GPU and CPU computations differ.")
