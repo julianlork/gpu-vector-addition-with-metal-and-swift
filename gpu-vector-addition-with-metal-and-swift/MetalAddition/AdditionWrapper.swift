@@ -10,18 +10,18 @@ import Metal
 
 class GPUAddition {
     
-    let STORAGE_MODE: MTLResourceOptions = .storageModeShared
+    private let STORAGE_MODE: MTLResourceOptions = .storageModeShared
     
-    let device: MTLDevice
-    let commandQueue: MTLCommandQueue
-    let pipelineState: MTLComputePipelineState
+    private let device: MTLDevice
+    private let commandQueue: MTLCommandQueue
+    private let pipelineState: MTLComputePipelineState
     
-    let bufferSummandA: MTLBuffer
-    let bufferSummandB: MTLBuffer
-    let bufferResult: MTLBuffer
-    let arrayLength: Int
+    private let bufferSummandA: MTLBuffer
+    private let bufferSummandB: MTLBuffer
+    private let bufferResult: MTLBuffer
+    private let arrayLength: Int
     
-    init(summandA: [Float], summandB: [Float]) {
+    init(_ summandA: [Float], _ summandB: [Float]) {
         
         precondition(summandA.count == summandB.count, "Array length of summand A and B must match.")
         
@@ -100,6 +100,13 @@ extension GPUAddition {
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
         
+    }
+    
+    func getResult() -> [Float] {
+        let rawPtr: UnsafeMutableRawPointer = self.bufferResult.contents()
+        let typedPtr: UnsafeMutablePointer<Float> = rawPtr.bindMemory(to: Float.self, capacity: self.arrayLength)
+        let bufferPtr: UnsafeBufferPointer = UnsafeBufferPointer(start: typedPtr, count: self.arrayLength)
+        return Array(bufferPtr)
     }
     
     private func getGridSize() -> MTLSize {
