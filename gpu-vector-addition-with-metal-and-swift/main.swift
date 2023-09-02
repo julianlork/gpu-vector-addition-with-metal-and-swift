@@ -6,21 +6,30 @@
 //
 
 import Foundation
+let arrayLength: Int = 100000000
+let summandA: [Float] = (1...arrayLength).map { _ in  Float(Int.random(in: 1...arrayLength))}
+let summandB: [Float] = (1...arrayLength).map {_ in  Float(Int.random(in: 1...arrayLength))}
+var cpuResult: [Float] = (1...arrayLength).map { _ in 0.0 }
+let gpuAddition: GPUAddition = GPUAddition(summandA, summandB)
 
-let gpuAddition: GPUAddition
-let summandA: [Float] = (1...1000).map { _ in  Float.random(in: 1...1000)}
-let summandB: [Float] = (1...1000).map {_ in Float.random(in: 1...1000)}
-var cpuResult: [Float] = (1...1000).map { _ in 0 }
-let gpuResult: [Float]
+let gpuComputationTime: CFTimeInterval = executeAdditionOnGPU()
+let cpuComputationTime: CFTimeInterval = executeAdditionOnCPU()
 
-/// GPU addition
-gpuAddition = GPUAddition(summandA, summandB)
-gpuAddition.compute()
-gpuResult = gpuAddition.getResult()
+assert(cpuResult == gpuAddition.getResult(), "Error: GPU and CPU computations differ.")
+print("\nGPU and CPU computations produce the same output.")
+print("GPU result in \(gpuComputationTime) sec")
+print("CPU result in \(cpuComputationTime) sec\n")
 
-/// CPU addition (low level)
-sum_of_arrays(summandA, summandB, &cpuResult, cpuResult.count)  /// &: inout param
+func executeAdditionOnGPU() -> CFTimeInterval {
+    let startTime = CFAbsoluteTimeGetCurrent()
+    gpuAddition.compute()
+    let endTime = CFAbsoluteTimeGetCurrent()
+    return endTime-startTime
+}
 
-/// Result verification
-assert(cpuResult == gpuResult, "Error: GPU and CPU computations differ.")
-print("\nGPU and CPU computations produce the same output.\n")
+func executeAdditionOnCPU() -> CFTimeInterval {
+    let startTime = CFAbsoluteTimeGetCurrent()
+    sum_of_arrays(summandA, summandB, &cpuResult, cpuResult.count)  /// &: inout param
+    let endTime = CFAbsoluteTimeGetCurrent()
+    return endTime-startTime
+}
