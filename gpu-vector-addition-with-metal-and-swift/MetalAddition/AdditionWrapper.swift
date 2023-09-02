@@ -81,7 +81,7 @@ extension GPUAddition {
         } catch {
             return nil
         }
-        
     }
-    
 }
+
+
