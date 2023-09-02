@@ -84,4 +84,31 @@ extension GPUAddition {
     }
 }
 
-
+extension GPUAddition {
+    
+    func compute() -> () {
+        guard
+            let commandBuffer: MTLCommandBuffer = self.commandQueue.makeCommandBuffer(),
+            let computeEncoder: MTLComputeCommandEncoder = commandBuffer.makeComputeCommandEncoder() else { return }
+        
+        computeEncoder.setComputePipelineState(self.pipelineState)
+        computeEncoder.setBuffer(self.bufferSummandA, offset: 0, index: 0)
+        computeEncoder.setBuffer(self.bufferSummandB, offset: 0, index: 1)
+        computeEncoder.setBuffer(self.bufferResult, offset: 0, index: 2)
+        computeEncoder.dispatchThreads(self.getGridSize(), threadsPerThreadgroup: self.getNumThreadsPerThreadgrup())
+        
+        commandBuffer.commit()
+        commandBuffer.waitUntilCompleted()
+        
+    }
+    
+    private func getGridSize() -> MTLSize {
+        return MTLSizeMake(self.arrayLength, 1, 1)
+    }
+    
+    private func getNumThreadsPerThreadgrup() -> MTLSize {
+        let maxNumThreadsPerThreadgroup = min(self.pipelineState.maxTotalThreadsPerThreadgroup, self.arrayLength) /// limit thread group size to array length
+        return MTLSizeMake(maxNumThreadsPerThreadgroup, 1, 1)
+    }
+    
+}
