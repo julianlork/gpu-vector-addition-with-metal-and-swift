@@ -7,12 +7,20 @@
 
 import Foundation
 
+/// GPU addition
 let gpuAddition: GPUAddition
 let summandA: [Float] = (1...1000).map { _ in  Float.random(in: 1...1000)}
 let summandB: [Float] = (1...1000).map {_ in Float.random(in: 1...1000)}
-let result: [Float]
+var cpuResult: [Float] = (1...1000).map { _ in 0 }
+let gpuResult: [Float]
 
 gpuAddition = GPUAddition(summandA, summandB)
 gpuAddition.compute()
-result = gpuAddition.getResult()
+gpuResult = gpuAddition.getResult()
 
+/// CPU addition (low level)
+sum_of_arrays(summandA, summandB, &cpuResult, cpuResult.count)
+
+/// Result verification
+assert(cpuResult == gpuResult, "Error: GPU and CPU computations differ.")
+print("\nGPU and CPU computations produce the same output.\n")

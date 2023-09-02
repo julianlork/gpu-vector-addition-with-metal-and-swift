@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B98E08F2AA3C95B00EA2AEA /* Addition.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B98E08E2AA3C95B00EA2AEA /* Addition.c */; };
 		5BB278142AA3B7C500A2DA6A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB278132AA3B7C500A2DA6A /* main.swift */; };
 		5BB2781C2AA3B7EA00A2DA6A /* AdditionShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */; };
 		5BB2781F2AA3B8E600A2DA6A /* AdditionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2781E2AA3B8E600A2DA6A /* AdditionWrapper.swift */; };
@@ -25,6 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B98E0882AA3C40000EA2AEA /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		5B98E08D2AA3C95B00EA2AEA /* Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Addition.h; sourceTree = "<group>"; };
+		5B98E08E2AA3C95B00EA2AEA /* Addition.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Addition.c; sourceTree = "<group>"; };
 		5BB278102AA3B7C500A2DA6A /* gpu-vector-addition-with-metal-and-swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "gpu-vector-addition-with-metal-and-swift"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB278132AA3B7C500A2DA6A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AdditionShader.metal; sourceTree = "<group>"; };
@@ -43,11 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B98E0872AA3C3B000EA2AEA /* CstyleAddition */ = {
+		5B98E08C2AA3C90500EA2AEA /* CAddition */ = {
 			isa = PBXGroup;
 			children = (
+				5B98E08D2AA3C95B00EA2AEA /* Addition.h */,
+				5B98E08E2AA3C95B00EA2AEA /* Addition.c */,
 			);
-			path = CstyleAddition;
+			path = CAddition;
 			sourceTree = "<group>";
 		};
 		5BB278072AA3B7C500A2DA6A = {
@@ -70,9 +76,10 @@
 		5BB278122AA3B7C500A2DA6A /* gpu-vector-addition-with-metal-and-swift */ = {
 			isa = PBXGroup;
 			children = (
-				5B98E0872AA3C3B000EA2AEA /* CstyleAddition */,
-				5BB2781A2AA3B7D400A2DA6A /* MetalAddition */,
 				5BB278132AA3B7C500A2DA6A /* main.swift */,
+				5B98E0882AA3C40000EA2AEA /* common.h */,
+				5B98E08C2AA3C90500EA2AEA /* CAddition */,
+				5BB2781A2AA3B7D400A2DA6A /* MetalAddition */,
 			);
 			path = "gpu-vector-addition-with-metal-and-swift";
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 				TargetAttributes = {
 					5BB2780F2AA3B7C500A2DA6A = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -147,6 +155,7 @@
 				5BB2781C2AA3B7EA00A2DA6A /* AdditionShader.metal in Sources */,
 				5BB2781F2AA3B8E600A2DA6A /* AdditionWrapper.swift in Sources */,
 				5BB278142AA3B7C500A2DA6A /* main.swift in Sources */,
+				5B98E08F2AA3C95B00EA2AEA /* Addition.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +278,13 @@
 		5BB278182AA3B7C500A2DA6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4UC9P549D8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gpu-vector-addition-with-metal-and-swift/common.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -280,10 +292,12 @@
 		5BB278192AA3B7C500A2DA6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4UC9P549D8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "gpu-vector-addition-with-metal-and-swift/common.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
