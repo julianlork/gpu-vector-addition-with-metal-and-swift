@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5BB278142AA3B7C500A2DA6A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB278132AA3B7C500A2DA6A /* main.swift */; };
+		5BB2781C2AA3B7EA00A2DA6A /* AdditionShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		5BB278102AA3B7C500A2DA6A /* gpu-vector-addition-with-metal-and-swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "gpu-vector-addition-with-metal-and-swift"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB278132AA3B7C500A2DA6A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AdditionShader.metal; sourceTree = "<group>"; };
+		5BB2781D2AA3B86D00A2DA6A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,7 @@
 		5BB278072AA3B7C500A2DA6A = {
 			isa = PBXGroup;
 			children = (
+				5BB2781D2AA3B86D00A2DA6A /* .gitignore */,
 				5BB278122AA3B7C500A2DA6A /* gpu-vector-addition-with-metal-and-swift */,
 				5BB278112AA3B7C500A2DA6A /* Products */,
 			);
@@ -57,9 +61,18 @@
 		5BB278122AA3B7C500A2DA6A /* gpu-vector-addition-with-metal-and-swift */ = {
 			isa = PBXGroup;
 			children = (
+				5BB2781A2AA3B7D400A2DA6A /* MetalAddition */,
 				5BB278132AA3B7C500A2DA6A /* main.swift */,
 			);
 			path = "gpu-vector-addition-with-metal-and-swift";
+			sourceTree = "<group>";
+		};
+		5BB2781A2AA3B7D400A2DA6A /* MetalAddition */ = {
+			isa = PBXGroup;
+			children = (
+				5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */,
+			);
+			path = MetalAddition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB2781C2AA3B7EA00A2DA6A /* AdditionShader.metal in Sources */,
 				5BB278142AA3B7C500A2DA6A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
