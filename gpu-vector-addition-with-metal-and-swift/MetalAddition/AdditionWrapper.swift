@@ -10,7 +10,7 @@ import Metal
 
 class GPUAddition {
     
-    private let STORAGE_MODE: MTLResourceOptions = .storageModeShared
+    private let STORAGE_MODE: MTLResourceOptions = MTLResourceOptions.storageModeShared
     
     private let device: MTLDevice
     private let commandQueue: MTLCommandQueue
@@ -96,6 +96,7 @@ extension GPUAddition {
         computeEncoder.setBuffer(self.bufferSummandB, offset: 0, index: 1)
         computeEncoder.setBuffer(self.bufferResult, offset: 0, index: 2)
         computeEncoder.dispatchThreads(self.getGridSize(), threadsPerThreadgroup: self.getNumThreadsPerThreadgrup())
+        computeEncoder.endEncoding()
         
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
