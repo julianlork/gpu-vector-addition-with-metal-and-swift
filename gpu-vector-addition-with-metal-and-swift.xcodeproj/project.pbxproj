@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5BB278142AA3B7C500A2DA6A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB278132AA3B7C500A2DA6A /* main.swift */; };
 		5BB2781C2AA3B7EA00A2DA6A /* AdditionShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */; };
+		5BB2781F2AA3B8E600A2DA6A /* AdditionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2781E2AA3B8E600A2DA6A /* AdditionWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 		5BB278132AA3B7C500A2DA6A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AdditionShader.metal; sourceTree = "<group>"; };
 		5BB2781D2AA3B86D00A2DA6A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		5BB2781E2AA3B8E600A2DA6A /* AdditionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB2781B2AA3B7EA00A2DA6A /* AdditionShader.metal */,
+				5BB2781E2AA3B8E600A2DA6A /* AdditionWrapper.swift */,
 			);
 			path = MetalAddition;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB2781C2AA3B7EA00A2DA6A /* AdditionShader.metal in Sources */,
+				5BB2781F2AA3B8E600A2DA6A /* AdditionWrapper.swift in Sources */,
 				5BB278142AA3B7C500A2DA6A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
