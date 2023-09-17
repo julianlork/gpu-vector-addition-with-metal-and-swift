@@ -12,5 +12,4 @@
 
 void sum_of_arrays(const float *summand_a, const float *summand_b, float *result, size_t array_length);
 
-
 #endif /* Addition_h */
