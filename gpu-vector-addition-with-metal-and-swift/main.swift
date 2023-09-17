@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 let arrayLength: Int = Int(1e6)
 let summandA: [Float] = (1...arrayLength).map { _ in  Float(Int.random(in: 1...arrayLength))}
 let summandB: [Float] = (1...arrayLength).map {_ in  Float(Int.random(in: 1...arrayLength))}
