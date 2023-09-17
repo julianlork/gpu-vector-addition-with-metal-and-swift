@@ -56,9 +56,7 @@ class GPUAddition {
         self.bufferSummandB = bufferSummandB
         self.bufferResult = bufferResult
         self.arrayLength = summandA.count
-        
     }
-    
 }
 
 extension GPUAddition {
