@@ -2,7 +2,7 @@
 Lookup project demonstrating how to perform gpu accelerated vector addition using Swift.
 
 ## Introduction
-This repository is a Swift port of Apple's tutorial Performing Calculations on a GPU originally written in Objective-C.
+This repository is a Swift port of Apple's tutorial Performing Calculations on a GPU originally written in Objective-C and serves a knowledge archive.
 
 ## Resources
 
